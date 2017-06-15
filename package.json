@@ -1,0 +1,20 @@
+{
+  "name": "firstbot",
+  "version": "1.0.0",
+  "description": "first bot for testing purposes",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "skype",
+    "bot",
+    "nodejs"
+  ],
+  "author": "Mihai Pop",
+  "license": "ISC",
+  "dependencies": {
+    "botbuilder": "^3.8.4",
+    "restify": "^4.3.0"
+  }
+}
