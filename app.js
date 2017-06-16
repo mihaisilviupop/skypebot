@@ -69,9 +69,9 @@ bot.dialog('/bere', [
     },
     function (session, results) {
         if (results.response.entity.toLowerCase() === 'da') {
-            session.send('dute bea una rece, o meriti!');
+            session.endDialog('dute bea una rece, o meriti!');
         } else {
-            session.send('EJTI BOLUND? Cum sa nu vrei bere?');
+            session.endDialog('EJTI BOLUND? Cum sa nu vrei bere?');
         }
     }
 ]);
