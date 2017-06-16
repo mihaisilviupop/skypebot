@@ -53,13 +53,7 @@ bot.dialog('/', function (session) {
         })
     }
     else if (session.message.text.toLowerCase().contains('ceai')) {
-        var response = builder.Prompts.confirm(session, 'Nu avem ceai! Dar asa-i ca ar merge o bere?');
-        if (response) {
-            session.send('daca muncesti ai bere, simplu');
-        } 
-        else {
-             session.send('EJTI BOLUND? Cum sa nu vrei bere?');
-        }
+        session.beginDialog('/bere');
     }
     else if (session.message.text.toLowerCase().contains('bere')) {
         session.send('da ar fi buna o bere acuma');
@@ -69,4 +63,16 @@ bot.dialog('/', function (session) {
     }
 });
 
+bot.dialog('/bere', [
+    function (session) {
+        builder.Prompts.choice(session, "Nu avem ceai! Dar asa-i ca ar merge o bere?", ['Da', 'Nu']);
+    },
+    function (session, results) {
+        if (results.response.entity.toLowerCase() === 'da') {
+            session.send('dute bea una rece, o meriti!');
+        } else {
+            session.send('EJTI BOLUND? Cum sa nu vrei bere?');
+        }
+    }
+]);
 
