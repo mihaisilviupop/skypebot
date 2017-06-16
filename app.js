@@ -1,5 +1,6 @@
 var restify = require('restify');
 var builder = require('botbuilder');
+var ping = require('./ping');
 //=========================================================
 // Bot Setup test
 //=========================================================
@@ -47,21 +48,18 @@ bot.dialog('/', function (session) {
         session.send(`How can I help you?`);
     }
     else if (session.message.text.toLowerCase().contains('ping')) {
-        var arrayMsg = [
-            'Pinging skype [Silvadata] with 32 bytes of data:',
-            'Request timed out.',
-            'Request timed out.',
-            'Reply from Silvadata: bytes=32 time=37ms TTL=54',
-            'Request timed out.',
-            '',
-            'Ping statistics for Silvadata:',
-            '     Packets: Sent = 4, Received = 1, Lost = 3 (75% loss),',
-            'Approximate round trip times in milli-seconds:',
-            '     Minimum = 33ms, Maximum = 37ms, Average = 35ms`;'
-        ];
-        arrayMsg.forEach(row => {
+        ping.ping().forEach(row => {
             session.send(row);
         })
+    }
+    else if (session.message.text.toLowerCase().contains('ceai')) {
+        var response = builder.Prompts.confirm(session, 'Nu avem ceai! Dar asa-i ca ar merge o bere?');
+        if (response) {
+            session.send('daca muncesti ai bere, simplu');
+        } 
+        else {
+             session.send('EJTI BOLUND? Cum sa nu vrei bere?');
+        }
     }
     else if (session.message.text.toLowerCase().contains('bere')) {
         session.send('da ar fi buna o bere acuma');
