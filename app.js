@@ -63,8 +63,8 @@ bot.dialog('/', function (session) {
             session.send(row);
         })
     }
-    else if(session.message.text.toLowerCase().contains('bere')){
-        session.beginDialog('bereDialog').send('da ar fi buna o bere acuma');
+    else if (session.message.text.toLowerCase().contains('bere')) {
+        session.send('da ar fi buna o bere acuma');
     }
     else {
         session.send(`Sorry I don't understand you...`);
